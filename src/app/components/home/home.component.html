@@ -51,21 +51,13 @@
       
           <!-- Conteúdo do card -->
           <div class="photo">
-            <img [src]="getPoster(movie)" alt="Card image">
+            <img [src]="getPoster(movie)" alt="Card image" class="w-full h-72 object-cover rounded-t-2xl">
           </div>
+
 
           <div class="card-content">
             <h2>{{ getTitle(movie) }}</h2>
             <p>{{ getAnalysis(movie) }}</p>
-
-            <!-- Avaliação com Estrelas -->
-            <div class="rating">
-              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-                <i class="fa-star" 
-                  [class.fas]="star <= getRating(movie)" 
-                  [class.far]="star > getRating(movie)"></i>
-              </ng-container>
-            </div>
           </div>
         </div>
       

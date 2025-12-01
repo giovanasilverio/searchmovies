@@ -64,20 +64,38 @@ export class HomeComponent {
     }
   }
 
-  // ----- HELPERS PRA EXIBIÇÃO (se quiser tratar fallback) -----
-  getPoster(movie: any): string {
-    return movie.photoPath || '../../../assets/imgs/comedia.jpg';
+// ----- HELPERS PRA EXIBIÇÃO (se quiser tratar fallback) -----
+getPoster(movie: any): string {
+  // 1) URL que você salvou no Firestore
+  if (movie.photoPath) {
+    return movie.photoPath;
   }
 
-  getTitle(movie: any): string {
-    return movie.title || 'Sem título';
+  // 2) Se em algum lugar você salvou "poster" direto (ex: resposta da API)
+  if (movie.poster) {
+    return movie.poster;
   }
 
-  getAnalysis(movie: any): string {
-    return movie.analysis || '';
-  }
+  // 3) fallback local
+  return 'assets/imgs/comedia.jpg';
+}
 
-  getRating(movie: any): number {
-    return movie.rating ?? 0;
-  }
+getTitle(movie: any): string {
+  // tenta vários campos possíveis
+  return movie.title || movie.name || 'Sem título';
+}
+
+getAnalysis(movie: any): string {
+  // tenta no novo campo que estamos usando
+  if (movie.analysis) return movie.analysis;
+
+  // se tiver errado com "analisys" (antigo)
+  if (movie.analisys) return movie.analisys;
+
+  // se alguém tiver salvo o plot direto
+  if (movie.plot) return movie.plot;
+
+  return '';
+}
+
 }
