@@ -11,6 +11,9 @@ import { environment } from '../environments/environment';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddMovieComponent } from './shared/components/add-movie/add-movie.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 
@@ -20,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     CadastroComponent,
     RecuperarSenhaComponent,
+    AddMovieComponent,
+    HeaderComponent,
+    FooterComponent,
 
   ],
   imports: [
