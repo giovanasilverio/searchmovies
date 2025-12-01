@@ -11,7 +11,6 @@ import { environment } from '../environments/environment';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -21,7 +20,7 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     CadastroComponent,
     RecuperarSenhaComponent,
-    HomeComponent
+
   ],
   imports: [
     BrowserModule,

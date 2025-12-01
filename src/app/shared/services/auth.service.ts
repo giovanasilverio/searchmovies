@@ -15,25 +15,32 @@ export class AuthService {
     private router: Router
   ) {}
 
-  cadastro(name: string, email: string, password: string, confirmPassword: string) {
-    if (password !== confirmPassword) {
+  cadastro(name: string, email: string, password: string, confirmPassword: string){
+    if(password !== confirmPassword){
       alert('As senhas não coincidem.');
       return;
     }
-    this.auth.createUserWithEmailAndPassword(email, password)
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        if (user) {
-          await this.salvarDados(user.uid, { name, email, tipo: 'Usuário' });
-          await user.sendEmailVerification();
-          await this.auth.signOut();
+
+    this.auth.createUserWithEmailAndPassword(email, password).then(async userCredential =>{
+      const user = userCredential?.user;
+
+      if(user){
+        const userData: UserInterface = {
+          name: name,
+          email: email,
+          tipo: 'Usuário'
         }
-      })
-      .catch(console.error);
+
+        await this.salvarDados(user.uid,userData);
+      }
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   }
 
-  salvarDados(id: string, user: UserInterface) {
-    return this.firestore.collection('users').doc(id).set(user, { merge: true });
+  salvarDados(id: string, user: UserInterface){
+    return this.firestore.collection('users').doc(id).set(user);
   }
 
   login(email: string, password: string): Promise<void> {
@@ -49,13 +56,6 @@ export class AuthService {
       if (!user.emailVerified) {
         throw new Error("Seu e-mail ainda não foi verificado. Verifique sua caixa de entrada.");
       }
-
-      // 2) Verificar se existe documento do usuário no Firestore (opcional)
-      const doc = await this.firestore.collection('users').doc(user.uid).ref.get();
-      if (!doc.exists) {
-        throw new Error("Seu cadastro está incompleto. Realize o cadastro novamente.");
-      }
-
       // Se tudo OK → login válido
       this.router.navigate(['/home']);
     })

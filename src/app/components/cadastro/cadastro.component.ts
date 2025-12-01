@@ -6,7 +6,6 @@ import { AuthService } from '../../shared/services/auth.service';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
-
 export class CadastroComponent {
 
   name: string = '';
@@ -14,21 +13,21 @@ export class CadastroComponent {
   password: string = '';
   confirmPassword: string = '';
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
 
   validateForm(): boolean {
-    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
-      alert('Por favor, preencha todos os campos.');
-      return false;
-    }
-
-    return true;
+    return this.name !== '' &&
+           this.email !== '' &&
+           this.password !== '' &&
+           this.confirmPassword !== '';
   }
 
-  cadastrar(): void {
-    if (this.validateForm()) {
-      this.auth.cadastro(this.name, this.email, this.password, this.confirmPassword);
+  cadastrar(){
+    if(this.validateForm()){
+      this.auth.cadastro(this.name,this.email,this.password,this.confirmPassword)
+    }else{ 
+      alert('Preencha todos os campos');
     }
   }
-
+  
 }
