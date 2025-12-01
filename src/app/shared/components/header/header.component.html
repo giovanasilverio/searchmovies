@@ -1,1 +1,35 @@
-<p>header works!</p>
+<header>
+    <div class="logoEfrase">
+        <img
+            (click)="navHome()"
+            src="../../../../assets/logos/WhiteLogo.png"
+            class="logo"
+        />
+    </div>
+    
+    <div class="menu-direita">
+        <div class="dropdown" (click)="toggleDropdown()">
+            <span class="nome-usuario">{{ user?.name || 'Usuário' }}</span>
+            <i *ngIf="!dropdownAberto" class="fa fa-chevron-down icon-seta"></i>
+            <i *ngIf="dropdownAberto" class="fa fa-chevron-up icon-seta"></i>
+            <div *ngIf="dropdownAberto" class="dropdown-conteudo">
+                <a (click)="openLogoutModal()">Sair</a>
+            </div>
+        </div>
+    </div>
+  </header>
+  
+  
+  <div *ngIf="showLogoutModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-title">
+          <img src="../../../../assets/logos/WhiteLogo.png">
+          Confirmar Logout
+        </div>
+        <div class="modal-text">Tem certeza que deseja sair?</div>
+        <div class="modal-buttons">
+          <button class="modal-cancel" (click)="cancelLogout()">Cancelar</button>
+          <button class="modal-confirm" (click)="confirmLogout()">Sim</button>
+        </div>
+      </div>
+  </div>

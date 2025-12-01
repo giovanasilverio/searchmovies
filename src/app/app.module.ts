@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMovieComponent } from './shared/components/add-movie/add-movie.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -26,7 +27,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AddMovieComponent,
     HeaderComponent,
     FooterComponent,
-
+    HomeComponent
   ],
   imports: [
     BrowserModule,
