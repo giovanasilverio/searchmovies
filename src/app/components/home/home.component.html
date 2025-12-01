@@ -28,15 +28,14 @@
         </button>
       
         <div *ngFor="let movie of displayedMovies" class="card group">
-          <!-- Icone de tres pontinhos (aparece ao passar o mouse) -->
+          <!-- Icone de tres pontinhos -->
           <div class="absolute top-2 right-2 hidden group-hover:block">
             <div class="relative">
               <button class="text-3xl text-gray-500 hover:text-gray-700 focus:outline-none">
-                &#x22EE; <!-- Unicode dos três pontinhos verticais -->
+                &#x22EE;
               </button>
 
-
-              <!-- Dropdown (oculto até que seja clicado) -->
+              <!-- Dropdown (ainda sem excluir de fato) -->
               <div class="absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden group-focus-within:block">
                 <ul>
                   <li>
@@ -52,19 +51,19 @@
       
           <!-- Conteúdo do card -->
           <div class="photo">
-            <img [src]="movie.photoPath" alt="Card image">
+            <img [src]="getPoster(movie)" alt="Card image">
           </div>
 
           <div class="card-content">
-            <h2>{{ movie.title }}</h2>
-            <p>{{ movie.analysis }}</p>
+            <h2>{{ getTitle(movie) }}</h2>
+            <p>{{ getAnalysis(movie) }}</p>
 
             <!-- Avaliação com Estrelas -->
             <div class="rating">
               <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
                 <i class="fa-star" 
-                  [class.fas]="star <= movie.rating" 
-                  [class.far]="star > movie.rating"></i>
+                  [class.fas]="star <= getRating(movie)" 
+                  [class.far]="star > getRating(movie)"></i>
               </ng-container>
             </div>
           </div>
@@ -84,9 +83,9 @@
   
   <app-footer></app-footer>
 
-<app-add-movie
-  *ngIf="showAddMovieModal"
-  (closeModal)="toggleAddMovieModal()"
-></app-add-movie>
+  <app-add-movie
+    *ngIf="showAddMovieModal"
+    (closeModal)="toggleAddMovieModal()"
+  ></app-add-movie>
 
 </div>
