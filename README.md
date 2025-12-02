@@ -46,7 +46,7 @@ O objetivo é oferecer uma plataforma intuitiva para pesquisa de filmes, exibiç
 ## **Screenshots**
 
 ### 🔹 Tela Inicial  
-![Home Screenshot](src\assets\screenshots\home.png)
+![Home Screenshot](src/assets/screenshots/home.png)
 
 ### 🔹 Modal de Adicionar Filme  
 ![Add Movie Screenshot](src\assets\screenshots\add-movie.png)
