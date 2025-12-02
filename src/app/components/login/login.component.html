@@ -66,6 +66,17 @@
 
           <p *ngIf="erro" class="text-red-600 mt-3 text-sm">{{ erro }}</p>
 
+<!-- Botão de reenviar e-mail de verificação -->
+<button
+  *ngIf="mostrarReenviar"
+  type="button"
+  class="btn-reenviar"
+  (click)="reenviarVerificacao()"
+>
+  Reenviar e-mail de verificação
+</button>
+
+
 
         </div>
       </div>
