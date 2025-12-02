@@ -1,27 +1,87 @@
-# Searchmovies
+# **Search Movies**  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+---
 
-## Development server
+## **Descrição do Projeto**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este projeto consiste em uma aplicação web desenvolvida para permitir que usuários pesquisem, cadastrem e gerenciem filmes.  
+O sistema consome dados da **API OMDb**, realiza a persistência de informações no **Firebase Firestore** e utiliza **Angular** como framework principal do front-end.
 
-## Code scaffolding
+O objetivo é oferecer uma plataforma intuitiva para pesquisa de filmes, exibição de cards com detalhes e gerenciamento personalizado pelo usuário autenticado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### **Principais Funcionalidades**
+- Buscar filme automaticamente na OMDb a partir do título  
+- Cadastro de filmes com imagem manual ou pôster oficial  
+- Edição e exclusão de filmes armazenados no Firestore  
+- Autenticação com Firebase Authentication  
+- Login com e-mail/senha ou Google  
+- Proteção de rotas com Guards  
+- Modal dinâmico para edição  
+- Interface moderna com TailwindCSS / SCSS
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## **Tecnologias Utilizadas**
 
-## Running unit tests
+### **Front-end**
+- Angular 18.2
+- TypeScript
+- HTML / SCSS
+- TailwindCSS
+- Font Awesome
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### **Back-end**
+- Node.js + Express  
+- API interna para consumir a OMDb com segurança  
+- Dotenv para manuseio da chave da API
 
-## Running end-to-end tests
+### **Serviços**
+- Firebase Authentication  
+- Firebase Firestore  
+- Firebase Storage  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### **Ferramentas**
+- Git & GitHub  
+- Postman (para testes da API)  
 
-## Further help
+## **Screenshots**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 🔹 Tela Inicial  
+![Home Screenshot](../searchmovies/src/assets/screenshots/home.png)
+
+### 🔹 Modal de Adicionar Filme  
+![Add Movie Screenshot](../searchmovies/src/assets/screenshots/add-movie.png)
+
+### 🔹 Página de Login  
+![Login Screenshot](../searchmovies/src/assets/screenshots/login.png)
+
+### 🔹 Página de Cadastro  
+![Cadastro Screenshot](../searchmovies/src/assets/screenshots/cadastro.png)
+
+
+## **Integrantes do Projeto**
+
+| Nome | GitHub |
+|------|--------|
+| *Giovana Silverio Pereira* | [link](https://github.com/giovanasilverio) |
+
+
+## **Como Rodar o Projeto**
+
+### Front-end
+```bash
+cd client
+npm install
+ng serve
+
+### Back-end
+cd server
+npm install
+npm start
+
+Crie o arquivo:
+
+server/.env
+
+Com:
+
+OMDB_API_KEY=SUA_CHAVE_AQUI
