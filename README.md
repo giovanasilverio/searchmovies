@@ -46,16 +46,16 @@ O objetivo é oferecer uma plataforma intuitiva para pesquisa de filmes, exibiç
 ## **Screenshots**
 
 ### 🔹 Tela Inicial  
-![Home Screenshot](../searchmovies/src/assets/screenshots/home.png)
+![Home Screenshot](src\assets\screenshots\home.png)
 
 ### 🔹 Modal de Adicionar Filme  
-![Add Movie Screenshot](../searchmovies/src/assets/screenshots/add-movie.png)
+![Add Movie Screenshot](src\assets\screenshots\add-movie.png)
 
 ### 🔹 Página de Login  
-![Login Screenshot](../searchmovies/src/assets/screenshots/login.png)
+![Login Screenshot](src\assets\screenshots\login.png)
 
 ### 🔹 Página de Cadastro  
-![Cadastro Screenshot](../searchmovies/src/assets/screenshots/cadastro.png)
+![Cadastro Screenshot](src\assets\screenshots\cadastro.png)
 
 
 ## **Integrantes do Projeto**
