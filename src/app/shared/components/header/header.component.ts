@@ -13,13 +13,6 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy{
   showLogoutModal: boolean=false;
 
-  frases: string[] = [
-    "Pau na máquina!",
-    "Desktop Asimov Jr!",
-    "Asimov, me arranha!",
-    "TRI-AI!",
-  ];
-
   fraseAtual: string = '';
 
   user: UserInterface | null = null;
@@ -39,7 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.subscription = this.auth.getUserData().subscribe((user: UserInterface) =>{
       this.user = user;
     })
-    this.exibirFraseAleatoria();
   }
 
   ngOnDestroy() {
@@ -50,11 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   toggleDropdown() {
     this.dropdownAberto = !this.dropdownAberto;
-  }
-
-  exibirFraseAleatoria() {
-    const indice = Math.floor(Math.random() * this.frases.length);
-    this.fraseAtual = this.frases[indice];
   }
 
   navHome() {

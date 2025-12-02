@@ -71,6 +71,34 @@
           &gt;
         </button>
       </div>
+            <!-- MODAL DE EDIÇÃO -->
+<div *ngIf="showEditModal" class="modal-overlay">
+
+  <div class="modal-container">
+
+    <!-- Cabeçalho -->
+    <div class="modal-header">
+      <span>Editar Resumo</span>
+    </div>
+
+    <!-- Corpo -->
+    <div class="modal-body">
+      <div class="modal-message">Edite o resumo do filme:</div>
+
+      <textarea
+        [(ngModel)]="editedAnalysis"
+        class="modal-textarea"
+      ></textarea>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="modal-buttons">
+      <button class="modal-cancel" (click)="closeEditModal()">Cancelar</button>
+      <button class="modal-confirm" (click)="saveEditedMovie()">Salvar</button>
+    </div>
+
+  </div>
+</div>
 
 
   </body>

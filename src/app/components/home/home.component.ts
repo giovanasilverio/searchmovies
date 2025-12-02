@@ -14,6 +14,9 @@ export class HomeComponent {
   movies: any[] = [];
   limit: number = 4;
   currentOffset: number = 0;
+  showEditModal: boolean = false;
+  movieBeingEdited: any | null = null;
+  editedAnalysis: string = '';
 
   constructor(private databaseService: DatabaseService) {}
 
@@ -118,42 +121,40 @@ deleteMovie(id: string | undefined): void {
 }
 
 editMovie(movie: any): void {
-  // pega o texto atual (tenta vários campos, pra garantir)
-  const currentPlot =
-    movie.analysis ||
-    movie.analisys ||   // caso tenha vindo com o nome antigo
-    movie.omdb_plot ||
-    movie.plot ||
-    '';
-
-  const updatedPlot = prompt(
-    'Edite a análise/plot do filme:',
-    currentPlot
-  );
-
-  // usuário clicou em "Cancelar"
-  if (updatedPlot === null) {
+  this.movieBeingEdited = movie;
+  this.editedAnalysis = this.getAnalysis(movie); // reutiliza helper
+  this.showEditModal = true;
+}
+saveEditedMovie(): void {
+  if (!this.movieBeingEdited?.id) {
+    console.error('Filme sem id, não dá pra atualizar.');
     return;
   }
 
-  const trimmed = updatedPlot.trim();
-
-  // se ficou vazio ou igual, não faz nada
-  if (!trimmed || trimmed === currentPlot) {
+  const trimmed = this.editedAnalysis.trim();
+  if (!trimmed) {
+    alert('A análise/plot não pode ficar vazia.');
     return;
   }
 
   this.databaseService
-    .updateDocument('movies', movie.id, {
-      analysis: trimmed   // 🔹 só atualiza o campo de texto
+    .updateDocument('movies', this.movieBeingEdited.id, {
+      analysis: trimmed   // só atualiza o campo analysis
     })
     .then(() => {
       console.log('Plot/Análise atualizada com sucesso.');
+      this.closeEditModal();
     })
     .catch((error) => {
       console.error('Erro ao atualizar filme:', error);
       alert('Erro ao atualizar filme.');
     });
+}
+
+closeEditModal(): void {
+  this.showEditModal = false;
+  this.movieBeingEdited = null;
+  this.editedAnalysis = '';
 }
 
 
