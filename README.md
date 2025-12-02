@@ -73,7 +73,7 @@ cd client
 npm install
 ng serve
 
-### Back-end
+Back-end
 cd server
 npm install
 npm start
