@@ -32,6 +32,9 @@ export class AuthService {
         }
 
         await this.salvarDados(user.uid,userData);
+        await user.sendEmailVerification();
+        this.router.navigate(['/login']);
+        alert('Cadastro realizado com sucesso! Por favor, verifique seu e-mail para ativar sua conta.');
       }
     })
     .catch(error=>{
