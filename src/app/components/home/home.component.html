@@ -35,12 +35,14 @@
                 &#x22EE;
               </button>
 
-              <!-- Dropdown (ainda sem excluir de fato) -->
               <div class="absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden group-focus-within:block">
                 <ul>
                   <li>
-                    <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" (click)="deleteMovie(movie.id)">
                       <i class="fas fa-trash-alt mr-2"></i> Excluir
+                    </button>
+                    <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" (click)="editMovie(movie)">
+                      <i class="fas fa-edit mr-2"></i> Editar
                     </button>
                   </li>
                 </ul>

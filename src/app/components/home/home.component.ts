@@ -64,7 +64,7 @@ export class HomeComponent {
     }
   }
 
-// ----- HELPERS PRA EXIBIÇÃO (se quiser tratar fallback) -----
+// ----- HELPERS PRA EXIBIÇÃO 
 getPoster(movie: any): string {
   // 1) URL que você salvou no Firestore
   if (movie.photoPath) {
@@ -97,5 +97,64 @@ getAnalysis(movie: any): string {
 
   return '';
 }
+
+deleteMovie(id: string | undefined): void {
+  if (!id) {
+    console.error('Filme sem id, não dá pra excluir.');
+    return;
+  }
+
+  const confirmar = confirm('Tem certeza que deseja excluir este filme?');
+  if (!confirmar) return;
+
+  this.databaseService.deleteDocument('movies', id)
+    .then(() => {
+      console.log('Filme excluído com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao excluir filme:', error);
+      alert('Erro ao excluir filme.');
+    });
+}
+
+editMovie(movie: any): void {
+  // pega o texto atual (tenta vários campos, pra garantir)
+  const currentPlot =
+    movie.analysis ||
+    movie.analisys ||   // caso tenha vindo com o nome antigo
+    movie.omdb_plot ||
+    movie.plot ||
+    '';
+
+  const updatedPlot = prompt(
+    'Edite a análise/plot do filme:',
+    currentPlot
+  );
+
+  // usuário clicou em "Cancelar"
+  if (updatedPlot === null) {
+    return;
+  }
+
+  const trimmed = updatedPlot.trim();
+
+  // se ficou vazio ou igual, não faz nada
+  if (!trimmed || trimmed === currentPlot) {
+    return;
+  }
+
+  this.databaseService
+    .updateDocument('movies', movie.id, {
+      analysis: trimmed   // 🔹 só atualiza o campo de texto
+    })
+    .then(() => {
+      console.log('Plot/Análise atualizada com sucesso.');
+    })
+    .catch((error) => {
+      console.error('Erro ao atualizar filme:', error);
+      alert('Erro ao atualizar filme.');
+    });
+}
+
 
 }
