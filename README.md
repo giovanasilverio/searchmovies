@@ -4,7 +4,7 @@
 
 ## **Descrição do Projeto**
 
-Este projeto consiste em uma aplicação web desenvolvida para permitir que usuários pesquisem, cadastrem e gerenciem filmes.  
+Este projeto consiste em uma aplicação web desenvolvida para o projeto final da disciplina de Programação Web da Universidade Federal de Itajubá.  
 O sistema consome dados da **API OMDb**, realiza a persistência de informações no **Firebase Firestore** e utiliza **Angular** como framework principal do front-end.
 
 O objetivo é oferecer uma plataforma intuitiva para pesquisa de filmes, exibição de cards com detalhes e gerenciamento personalizado pelo usuário autenticado.
